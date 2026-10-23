@@ -1,0 +1,226 @@
+{
+  "env": {
+    "arch": "sm_86",
+    "torch": "2.11.0+cu128",
+    "cuda": "12.8",
+    "machine_label": "dev"
+  },
+  "config": {
+    "size": "small",
+    "batch": 2,
+    "seq": 512,
+    "precision": "bf16",
+    "attn": "sdpa",
+    "fused_adam": true,
+    "ckpt": false,
+    "params_total_m": 134.1
+  },
+  "wall_ms_per_step": 82.4,
+  "gpu_busy_ms_per_step": 76.46,
+  "gpu_idle_pct": 7.2,
+  "timing_inflated": false,
+  "buckets": [
+    {
+      "bucket": "matmul",
+      "ms_per_step": 32.175,
+      "pct_of_gpu_time": 42.1
+    },
+    {
+      "bucket": "elementwise_and_other",
+      "ms_per_step": 24.533,
+      "pct_of_gpu_time": 32.1
+    },
+    {
+      "bucket": "optimizer",
+      "ms_per_step": 12.125,
+      "pct_of_gpu_time": 15.9
+    },
+    {
+      "bucket": "attention",
+      "ms_per_step": 7.014,
+      "pct_of_gpu_time": 9.2
+    },
+    {
+      "bucket": "memcpy_memset",
+      "ms_per_step": 0.609,
+      "pct_of_gpu_time": 0.8
+    }
+  ],
+  "top_kernels": [
+    {
+      "kernel": "_ZN2at6native52_GLOBAL__N__aed75f65_19_fused_adamw_impl_cu_8b44fa2325multi_tensor_apply_kernelINS1_32FusedOptimizerTensorListMetadataILi4EEENS1_20FusedAdamMathFunctorIfLi4ELNS0_9ADAM_MODEE1ELb0EEEJPKfdddddbS9_S9_EEEvT_T0_DpT1_",
+      "bucket": "optimizer",
+      "calls_per_step": 7.0,
+      "ms_per_step": 12.122,
+      "pct_of_gpu_time": 15.9
+    },
+    {
+      "kernel": "_ZN7cutlass7Kernel2I68cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_256x128_32x3_tn_align8EEvNT_6ParamsE",
+      "bucket": "matmul",
+      "calls_per_step": 37.0,
+      "ms_per_step": 8.694,
+      "pct_of_gpu_time": 11.4
+    },
+    {
+      "kernel": "ampere_bf16_s1688gemm_bf16_128x128_ldg8_f2f_stages_32x1_nt",
+      "bucket": "matmul",
+      "calls_per_step": 60.0,
+      "ms_per_step": 8.35,
+      "pct_of_gpu_time": 10.9
+    },
+    {
+      "kernel": "ampere_bf16_s16816gemm_bf16_256x128_ldg8_f2f_stages_32x3_nn",
+      "bucket": "matmul",
+      "calls_per_step": 36.0,
+      "ms_per_step": 5.936,
+      "pct_of_gpu_time": 7.8
+    },
+    {
+      "kernel": "_ZN2at6native29vectorized_elementwise_kernelILi4EZNS0_25bfloat16_copy_kernel_cudaERNS_18TensorIteratorBaseEEUlfE_St5arrayIPcLy2EEEEviT0_T1_",
+      "bucket": "elementwise_and_other",
+      "calls_per_step": 147.0,
+      "ms_per_step": 3.711,
+      "pct_of_gpu_time": 4.9
+    },
+    {
+      "kernel": "_ZN2at6native27unrolled_elementwise_kernelIZZZNS0_23direct_copy_kernel_cudaERNS_18TensorIteratorBaseEENKUlvE1_clEvENKUlvE5_clEvEUlfE_St5arrayIPcLy2EELi4E23TrivialOffsetCalculatorILi1EjESB_NS0_6memory12LoadWithCastILi1EEENSC_13StoreWithCastILi1EEEEEviT_T0_T2_T3_T4_T5_",
+      "bucket": "elementwise_and_other",
+      "calls_per_step": 99.0,
+      "ms_per_step": 3.623,
+      "pct_of_gpu_time": 4.7
+    },
+    {
+      "kernel": "_Z52fmha_cutlassB_bf16_aligned_64x64_k64_seqaligned_sm80N22PyTorchMemEffAttention23AttentionBackwardKernelIN7cutlass4arch4Sm80ENS1_10bfloat16_tELb1ELb0ELb1ELi64ELi64ELi64ELb1EE6ParamsE",
+      "bucket": "attention",
+      "calls_per_step": 12.0,
+      "ms_per_step": 2.924,
+      "pct_of_gpu_time": 3.8
+    },
+    {
+      "kernel": "_ZN2at6native29vectorized_elementwise_kernelILi4ENS0_13BinaryFunctorIfffNS0_15binary_internal10MulFunctorIfEEEESt5arrayIPcLy3EEEEviT0_T1_",
+      "bucket": "elementwise_and_other",
+      "calls_per_step": 100.0,
+      "ms_per_step": 2.346,
+      "pct_of_gpu_time": 3.1
+    },
+    {
+      "kernel": "_ZN7cutlass7Kernel2I68cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_256x128_32x3_nn_align8EEvNT_6ParamsE",
+      "bucket": "matmul",
+      "calls_per_step": 12.0,
+      "ms_per_step": 2.242,
+      "pct_of_gpu_time": 2.9
+    },
+    {
+      "kernel": "_ZN2at6native18elementwise_kernelILi128ELi2EZNS0_22gpu_kernel_impl_nocastINS0_13BinaryFunctorIfffNS0_15binary_internal10MulFunctorIfEEEEEEvRNS_18TensorIteratorBaseERKT_EUliE_EEviT1_",
+      "bucket": "elementwise_and_other",
+      "calls_per_step": 100.0,
+      "ms_per_step": 2.149,
+      "pct_of_gpu_time": 2.8
+    },
+    {
+      "kernel": "ampere_bf16_s16816gemm_bf16_256x128_ldg8_f2f_stages_32x3_nt",
+      "bucket": "matmul",
+      "calls_per_step": 1.0,
+      "ms_per_step": 1.965,
+      "pct_of_gpu_time": 2.6
+    },
+    {
+      "kernel": "ampere_bf16_s1688gemm_bf16_128x128_ldg8_f2f_nn",
+      "bucket": "matmul",
+      "calls_per_step": 1.0,
+      "ms_per_step": 1.867,
+      "pct_of_gpu_time": 2.4
+    },
+    {
+      "kernel": "_ZN2at6native29vectorized_elementwise_kernelILi4ENS0_15CUDAFunctor_addIfEESt5arrayIPcLy3EEEEviT0_T1_",
+      "bucket": "elementwise_and_other",
+      "calls_per_step": 61.0,
+      "ms_per_step": 1.848,
+      "pct_of_gpu_time": 2.4
+    },
+    {
+      "kernel": "_ZN2at6native43_GLOBAL__N__c5dc35cd_10_SoftMax_cu_0af7be2120cunn_SoftMaxBackwardILi4EfffNS1_26LogSoftMaxBackwardEpilogueEEEvPT0_PKT2_S8_x",
+      "bucket": "attention",
+      "calls_per_step": 1.0,
+      "ms_per_step": 1.644,
+      "pct_of_gpu_time": 2.2
+    },
+    {
+      "kernel": "_ZN2at6native43_GLOBAL__N__c5dc35cd_10_SoftMax_cu_0af7be2119cunn_SoftMaxForwardILi4EfffNS1_25LogSoftMaxForwardEpilogueEEEvPT2_PKT0_i",
+      "bucket": "attention",
+      "calls_per_step": 1.0,
+      "ms_per_step": 1.623,
+      "pct_of_gpu_time": 2.1
+    },
+    {
+      "kernel": "ampere_bf16_s1688gemm_bf16_128x128_ldg8_f2f_stages_32x1_tn",
+      "bucket": "matmul",
+      "calls_per_step": 12.0,
+      "ms_per_step": 1.594,
+      "pct_of_gpu_time": 2.1
+    },
+    {
+      "kernel": "_ZN2at6native40_GLOBAL__N__0b46c3ea_8_Shape_cu_85d9f36c19CatArrayBatchedCopyINS1_10OpaqueTypeILj2EEEjLi4ELi64ELi64EEEvPT_NS1_25CatArrInputTensorMetadataIS5_T0_XT2_EXT3_EEENS1_16TensorSizeStrideIS8_Lj4EEEiS8_",
+      "bucket": "elementwise_and_other",
+      "calls_per_step": 60.0,
+      "ms_per_step": 1.572,
+      "pct_of_gpu_time": 2.1
+    },
+    {
+      "kernel": "_ZN2at6native29vectorized_elementwise_kernelILi4ENS0_13BinaryFunctorIN3c108BFloat16ES4_S4_NS0_15binary_internal10MulFunctorIfEEEESt5arrayIPcLy3EEEEviT0_T1_",
+      "bucket": "elementwise_and_other",
+      "calls_per_step": 36.0,
+      "ms_per_step": 1.504,
+      "pct_of_gpu_time": 2.0
+    },
+    {
+      "kernel": "_ZN2at6native18elementwise_kernelILi128ELi4EZNS0_22gpu_kernel_impl_nocastINS0_13BinaryFunctorIN3c108BFloat16ES5_S5_NS0_15binary_internal10MulFunctorIfEEEEEEvRNS_18TensorIteratorBaseERKT_EUliE_EEviT1_",
+      "bucket": "elementwise_and_other",
+      "calls_per_step": 96.0,
+      "ms_per_step": 1.309,
+      "pct_of_gpu_time": 1.7
+    },
+    {
+      "kernel": "_Z40fmha_cutlassF_bf16_aligned_64x64_rf_sm80N22PyTorchMemEffAttention15AttentionKernelIN7cutlass10bfloat16_tENS1_4arch4Sm80ELb1ELi64ELi64ELi64ELb1ELb1EE6ParamsE",
+      "bucket": "attention",
+      "calls_per_step": 12.0,
+      "ms_per_step": 0.823,
+      "pct_of_gpu_time": 1.1
+    },
+    {
+      "kernel": "_ZN2at6native18elementwise_kernelILi128ELi4EZNS0_22gpu_kernel_impl_nocastINS0_15CUDAFunctor_addIN3c108BFloat16EEEEEvRNS_18TensorIteratorBaseERKT_EUliE_EEviT1_",
+      "bucket": "elementwise_and_other",
+      "calls_per_step": 48.0,
+      "ms_per_step": 0.815,
+      "pct_of_gpu_time": 1.1
+    },
+    {
+      "kernel": "ampere_bf16_s1688gemm_bf16_64x128_sliced1x2_ldg8_f2f_nn",
+      "bucket": "matmul",
+      "calls_per_step": 12.0,
+      "ms_per_step": 0.779,
+      "pct_of_gpu_time": 1.0
+    },
+    {
+      "kernel": "ampere_bf16_s1688gemm_bf16_64x128_sliced1x2_ldg8_f2f_tn",
+      "bucket": "matmul",
+      "calls_per_step": 12.0,
+      "ms_per_step": 0.748,
+      "pct_of_gpu_time": 1.0
+    },
+    {
+      "kernel": "_ZN2at6native29vectorized_elementwise_kernelILi4ENS0_11FillFunctorIfEESt5arrayIPcLy1EEEEviT0_T1_",
+      "bucket": "elementwise_and_other",
+      "calls_per_step": 3.0,
+      "ms_per_step": 0.704,
+      "pct_of_gpu_time": 0.9
+    },
+    {
+      "kernel": "_ZN2at6native27unrolled_elementwise_kernelINS0_15CUDAFunctor_addIfEESt5arrayIPcLy3EELi4E23TrivialOffsetCalculatorILi2EjES7_ILi1EjENS0_6memory12LoadWithCastILi2EEENSA_13StoreWithCastILi1EEEEEviT_T0_T2_T3_T4_T5_",
+      "bucket": "elementwise_and_other",
+      "calls_per_step": 24.0,
+      "ms_per_step": 0.639,
+      "pct_of_gpu_time": 0.8
+    }
+  ]
+}

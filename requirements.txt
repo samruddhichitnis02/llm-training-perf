@@ -1,0 +1,18 @@
+# Needed so pip finds the GPU build of PyTorch (CUDA 12.8, works for Blackwell and older cards)
+--extra-index-url https://download.pytorch.org/whl/cu128
+
+# Core: benchmarks, model, kernels
+torch
+numpy
+
+# Results: tables and plots for the README
+pandas
+matplotlib
+tabulate
+
+# Agent that reads profiler traces and suggests fixes
+anthropic
+python-dotenv
+
+# Tests
+pytest

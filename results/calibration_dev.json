@@ -1,0 +1,15 @@
+{
+  "env": {
+    "arch": "sm_86",
+    "torch": "2.11.0+cu128",
+    "cuda": "12.8",
+    "os": "Windows",
+    "machine_label": "dev"
+  },
+  "calibration": {
+    "matmul_tflops_fp32": 6.9,
+    "matmul_tflops_fp16": 23.1,
+    "matmul_tflops_bf16": 23.9,
+    "memory_bandwidth_gbs": 312.6
+  }
+}
