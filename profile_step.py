@@ -1,6 +1,4 @@
 """
-profile_step.py  (llm-training-perf)
-
 Runs a few training steps under the PyTorch profiler and answers one question:
 where does the GPU time go?
 
