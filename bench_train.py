@@ -1,5 +1,4 @@
 """
-bench_train.py  (llm-training-perf)
 
 One file that does three jobs:
 
